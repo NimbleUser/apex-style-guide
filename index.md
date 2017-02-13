@@ -56,7 +56,7 @@ A source file consists of, **in order**:
 
 ### 3.1 Top level ApexDoc comments
 
-TODO THIS SECTION
+Each top-level `global` or `public` class starts with an ApexDoc on the first line, containing a high level description of its purpose.
 
 ### 3.2 Class declaration
 
