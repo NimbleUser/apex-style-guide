@@ -32,6 +32,8 @@ Example code in this document is **non-normative**. That is, while the examples 
 
 The source file name consists of the case-sensitive name of the top-level class it contains (of which there is **exactly one**), plus the `.cls` extension.
 
+See also section 5.2.1 for Apex Class naming.
+
 ### 2.2 File encoding: UTF-8
 
 Source files are encoded in **UTF-8**.
@@ -45,6 +47,14 @@ Aside from the line terminator sequence, the **ASCII horizontal space character*
 1. All other whitespace characters in string and character literals are escaped.
 2. Tab characters are **not** used for indentation.
 
+### 2.3.2 String class escape methods 
+
+The [Apex String class](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_methods_system_string.htm) defines several escape* methods that can be used to include special characters in strings. 
+
+#### 2.3.3 SOQL quoted string escape sequence 
+
+SOQL defines [several escape sequences](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql_select_quotedstringescapes.htm) that are valid in queries so that you can include special characters in your queries.
+
 ## 3 Source file structure
 
 A source file consists of, **in order**:
@@ -57,6 +67,8 @@ A source file consists of, **in order**:
 ### 3.1 Top level ApexDoc comments
 
 Each top-level `global` or `public` class starts with an ApexDoc on the first line, containing a high level description of its purpose.
+
+See section 7 for more about ApexDoc.
 
 ### 3.2 Class declaration
 
@@ -76,13 +88,19 @@ When a class has multiple constructors, or multiple methods with the same name, 
 
 ## 4 Formatting
 
-**Terminology Note:** _block-like construct_ refers to the body of a class, method or constructor. Note that, by Section 4.8.3.1 on array initializers, any array initializer _may_ optionally be treated as if it were a block-like construct.
+**Terminology Note:** _block-like construct_ refers to the body of a class, method or constructor. Note that, by Section 4.8.3.1 on list initializers, any list initializer _may_ optionally be treated as if it were a block-like construct.
 
 ### 4.1 Braces
 
 #### 4.1.1 Braces are used where optional
 
 Braces are used with `if`, `else`, `for`, `do` and `while` statements, even when the body is empty or contains only a single statement.
+
+[Apex properties](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_classes_properties.htm) may be written like: 
+
+    public integer MyReadOnlyProp { get; }
+    public double MyReadWriteProp { get; set; }
+    public string MyWriteOnlyProp { set; }
 
 #### 4.1.2 Nonempty blocks: K & R style
 
@@ -102,6 +120,8 @@ Examples:
             callToAnotherMethod();
         }    
     }
+
+See section 4.6.2 for horizontal whitespace style.
 
 #### 4.1.3 Empty blocks: may be concise
 
@@ -162,7 +182,7 @@ The prime directive of line-wrapping is: prefer to break at a **higher syntactic
 
 **Note:** The primary goal for line wrapping is to have clear code, _not necessarily_ code that fits in the smallest number of lines.
 
-#### 4.5.2 Indent continuation lines at least +4 spaces
+#### 4.5.2 Indent continuation lines at least +8 spaces
 
 When line-wrapping, each line after the first (each _continuation line_) is indented at least +4 from the original line.
 
@@ -191,13 +211,15 @@ Beyond where required by the language or other style rules, and apart from liter
 
 1. Separating any reserved word, such as `if`, `for` or `catch`, from an open parenthesis (`(`) that follows it on that line
 2. Separating any reserved word, such as `else` or `catch`, from a closing curly brace (`}`) that precedes it on that line
-3. On both sides of any binary or ternary operator. This also applies to the following "operator-like" symbols:
+3. On both sides of any binary or ternary operator. This also applies to the following "operator-like" symbol:
     * the colon (`:`) in an enhanced `for` statement
+But does not apply to: 
     * the dot separator (`.`), which is written like `object.toString()`
+    * the SOQL local variable reference, which is written like `B = [SELECT Id FROM Account WHERE Id = :A.Id];`.
 5. After closing parenthesis (`)`) of a cast
 6. On both sides of the double slash (`//`) that begins an end-of-line comment. Here, multiple spaces are allowed, but not required.
 7. Between the type and variable of a declaration: `List<String> list`
-8. _Optional_ just inside both braces of an array initializer
+8. _Optional_ just inside both braces of an list initializer
     * `new int[] {5, 6}` and `new int[] { 5, 6 }` are both valid
 
 This rule is never interpreted as requiring or forbidding additional space at the start or end of a line; it addresses only _interior_ space.
@@ -235,7 +257,7 @@ After each comma that follows an enum constant, a line break is optional. Additi
         MAYBE
     }
 
-An enum with no documentation on its constants may optionally be formatted as if it were an array initializer (see Section 4.8.3.1 on array initializers).
+An enum with no documentation on its constants may optionally be formatted as if it were an list initializer (see Section 4.8.3.1 on list initializers).
 
     private enum Suit { CLUBS, HEARTS, SPADES, DIAMONDS }
 
@@ -267,10 +289,17 @@ Any list initializer may _optionally_ be formatted as if it were a "block-like c
 
 #### 4.8.4 Annotations
 
-Annotations applying to a class, method or constructor appear immediately after the documentation block, and on a line of its own. These line breaks do not constitute line-wrapping (Section 4.5, Line-wrapping, so the indentation level is not increased. Example:
+[Annotations](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_classes_annotation.htm) applying to a class, method or constructor appear immediately after the documentation block, and on a line of its own. These line breaks do not constitute line-wrapping (Section 4.5, Line-wrapping, so the indentation level is not increased. Example:
 
+    @deprecated
     @testVisible
     private String getNameIfPresent() { ... }
+
+Exception: A single parameterless annotation may instead appear together with the first line of the signature, for example:
+
+    @testSetup static void methodName() {
+
+    }
 
 #### 4.8.5 Comments
 
@@ -306,6 +335,8 @@ private protected public global virtual abstract with sharing without sharing
 ### 5.1 Rules common to all identifiers
 
 Identifiers use only ASCII letters and digits, and, in a small number of cases noted below, underscores. Thus each valid identifier name is matched by the regular expression `\w+` .
+
+The platform reserves use of two consecutive underscores in a name (double underscore). A double underscore cannot be used in a developer name. 
 
 In NimbleUser Style special prefixes or suffixes, like those seen in the examples `name_`, `mName`, `s_name` and `kName`, are **not** used.
 
@@ -365,6 +396,10 @@ Local variable names are written in lowerCamelCase.
 
 Even when final and immutable, local variables are not considered to be constants, and should not be styled as constants.
 
+#### 5.2.8 Property names
+
+Property names are written in UpperCamelCase.
+
 ### 5.3 Camel case: defined
 
 Sometimes there is more than one reasonable way to convert an English phrase into camel case, such as when acronyms or unusual constructs like "IPv6" or "iOS" are present. To improve predictability, NimbleUser Style specifies the following (nearly) deterministic scheme.
@@ -413,7 +448,7 @@ When it truly is appropriate to take no action whatsoever in a catch block, the 
 
 #### 7.1.1 General form
 
-The _basic_ formatting of ApexDoc blocks is as seen in this example:
+The _basic_ formatting of [ApexDoc](https://github.com/SalesforceFoundation/ApexDoc) blocks is as seen in this example:
 
     /**
      * @description A description of the method's functionality would go here.
@@ -427,7 +462,15 @@ The _basic_ formatting of ApexDoc blocks is as seen in this example:
 
 Any of the standard "at-clauses" that are used appear in the order `@description`, `@param`, `@return`, `@throws`. When an at-clause doesn't fit on a single line, continuation lines are indented four (or more) spaces from the position of the `@`.
 
-### 7.2 Where ApexDoc is used
+### 7.2 The summary fragment
+
+Each Javadoc block begins with a brief **summary fragment**. This fragment is very important: it is the only part of the text that appears in certain contexts such as class and method indexes.
+
+This is a fragment: a noun phrase or verb phrase, not a complete sentence. It does **not** begin with "A {@code Foo} is a...", or "This method returns...", nor does it form a complete imperative sentence like "Save the record.". However, the fragment is capitalized and punctuated as if it were a complete sentence.
+
+**Tip:** A common mistake is to write simple Javadoc in the form `@return the customer ID`. This is incorrect, and should be changed to `Returns the customer ID.`
+
+### 7.3 Where ApexDoc is used
 
 At the _minimum_, ApexDoc is present for every `global`, `public` class, and every `global`, `public` or `protected` member of such a class, with a few exceptions noted below.
 
@@ -440,3 +483,9 @@ ApexDoc is optional for "simple, obvious" methods like `getFoo`, in cases where 
 #### 7.3.2 Exception: overrides
 
 ApexDoc is not always present on a method that overrides a supertype method.
+
+#### 7.3.3 Non-required ApexDoc
+
+Other classes and members have ApexDoc *as needed or desired*.
+
+Whenever an implementation comment would be used to define the overall purpose or behavior of a class or member, that comment is written as ApexDoc instead (using `/**`).
