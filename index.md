@@ -1,8 +1,8 @@
 ---
 layout: page
 permalink: /
+title:  "The Guide"
 ---
-# NimbleUser Apex Style Guide
 
 ## 1 Introduction
 
@@ -37,8 +37,6 @@ See also section 5.2.1 for Apex Class naming.
 ### 2.2 File encoding: UTF-8
 
 Source files are encoded in **UTF-8**.
-
-### 2.3 Special characters
 
 #### 2.3.1 Whitespace characters
 
