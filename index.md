@@ -452,11 +452,11 @@ Any of the standard "at-clauses" that are used appear in the order `@description
 
 ### 7.2 The summary fragment
 
-Each Javadoc block begins with a brief **summary fragment**. This fragment is very important: it is the only part of the text that appears in certain contexts such as class and method indexes.
+Each ApexDoc block begins with a brief **summary fragment**. This fragment is very important: it is the only part of the text that appears in certain contexts such as class and method indexes.
 
 This is a fragment: a noun phrase or verb phrase, not a complete sentence. It does **not** begin with "A {@code Foo} is a...", or "This method returns...", nor does it form a complete imperative sentence like "Save the record.". However, the fragment is capitalized and punctuated as if it were a complete sentence.
 
-**Tip:** A common mistake is to write simple Javadoc in the form `@return the customer ID`. This is incorrect, and should be changed to `Returns the customer ID.`
+**Tip:** A common mistake is to write simple ApexDoc in the form `@return the customer ID`. This is incorrect, and should be changed to `Returns the customer ID.`
 
 ### 7.3 Where ApexDoc is used
 
