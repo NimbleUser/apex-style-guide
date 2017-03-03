@@ -45,11 +45,11 @@ Aside from the line terminator sequence, the **ASCII horizontal space character*
 1. All other whitespace characters in string and character literals are escaped.
 2. Tab characters are **not** used for indentation.
 
-### 2.3.2 String class escape methods 
+### 2.3.2 String class escape methods
 
-The [Apex String class](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_methods_system_string.htm) defines several escape* methods that can be used to include special characters in strings. 
+The [Apex String class](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_methods_system_string.htm) defines several escape* methods that can be used to include special characters in strings.
 
-#### 2.3.3 SOQL quoted string escape sequence 
+#### 2.3.3 SOQL quoted string escape sequence
 
 SOQL defines [several escape sequences](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql_select_quotedstringescapes.htm) that are valid in queries so that you can include special characters in your queries.
 
@@ -94,7 +94,7 @@ When a class has multiple constructors, or multiple methods with the same name, 
 
 Braces are used with `if`, `else`, `for`, `do` and `while` statements, even when the body is empty or contains only a single statement.
 
-[Apex properties](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_classes_properties.htm) may be written like: 
+[Apex properties](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_classes_properties.htm) may be written like:
 
     public integer MyReadOnlyProp { get; }
     public double MyReadWriteProp { get; set; }
@@ -211,7 +211,7 @@ Beyond where required by the language or other style rules, and apart from liter
 2. Separating any reserved word, such as `else` or `catch`, from a closing curly brace (`}`) that precedes it on that line
 3. On both sides of any binary or ternary operator. This also applies to the following "operator-like" symbol:
     * the colon (`:`) in an enhanced `for` statement
-But does not apply to: 
+But does not apply to:
     * the dot separator (`.`), which is written like `object.toString()`
     * the SOQL local variable reference, which is written like `B = [SELECT Id FROM Account WHERE Id = :A.Id];`.
 4. On both sides of the double slash (`//`) that begins an end-of-line comment. Here, multiple spaces are allowed, but not required.
@@ -333,7 +333,7 @@ private protected public global virtual abstract with sharing without sharing
 
 Identifiers use only ASCII letters and digits, and, in a small number of cases noted below, underscores. Thus each valid identifier name is matched by the regular expression `\w+` .
 
-The platform reserves use of two consecutive underscores in a name (double underscore). A double underscore cannot be used in a developer name. 
+The platform reserves use of two consecutive underscores in a name (double underscore). A double underscore cannot be used in a developer name.
 
 In NimbleUser Style special prefixes or suffixes, like those seen in the examples `name_`, `mName`, `s_name` and `kName`, are **not** used.
 
