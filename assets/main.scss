@@ -5,7 +5,7 @@
 
 // Our variables
 $base-font-family: 'Rubik', sans-serif;
-$base-font-size:   14px;
+$base-font-size:   16px;
 $base-font-weight: 300;
 $small-font-size:  $base-font-size * 0.875;
 $base-line-height: 1.5;
@@ -13,7 +13,7 @@ $base-line-height: 1.5;
 $spacing-unit:     30px;
 
 $text-color:       #333;
-$background-color: #fff;
+$background-color: #ffffff;
 $brand-color:      #00AFD7;
 $code-background:  #fafafa;
 
@@ -64,7 +64,7 @@ table th, table td {
 pre, code {
 	border-radius: 0;
 	background-color: $code-background;
-	font-size: $base-font-size;
+	font-size: $base-font-size - 2px;
 }
 
 a:visited {
@@ -74,7 +74,12 @@ a:visited {
 .site-header {
 	border-top: none;
 	border-bottom: none;
-	background-color: #fafafa;
+	background-color: #333;
+	color: #fff;
+}
+
+.site-nav .page-link, .site-title, .site-title:visited {
+	color: #fff;
 }
 
 .site-title {
@@ -88,15 +93,15 @@ a:visited {
 }
 
 .post-content h1 {
-	font-size: 26px;
+	font-size: 28px;
 }
 
 .post-content h2 {
-	font-size: 22px;
+	font-size: 24px;
 }
 
 .post-content h3 {
-	font-size: 18px;
+	font-size: 20px;
 }
 
 .highlighter-rouge .highlight {
