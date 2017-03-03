@@ -216,10 +216,9 @@ Beyond where required by the language or other style rules, and apart from liter
 But does not apply to: 
     * the dot separator (`.`), which is written like `object.toString()`
     * the SOQL local variable reference, which is written like `B = [SELECT Id FROM Account WHERE Id = :A.Id];`.
-5. After closing parenthesis (`)`) of a cast
-6. On both sides of the double slash (`//`) that begins an end-of-line comment. Here, multiple spaces are allowed, but not required.
-7. Between the type and variable of a declaration: `List<String> list`
-8. _Optional_ just inside both braces of an list initializer
+4. On both sides of the double slash (`//`) that begins an end-of-line comment. Here, multiple spaces are allowed, but not required.
+5. Between the type and variable of a declaration: `List<String> list`
+6. _Optional_ just inside both braces of an list initializer
     * `new int[] {5, 6}` and `new int[] { 5, 6 }` are both valid
 
 This rule is never interpreted as requiring or forbidding additional space at the start or end of a line; it addresses only _interior_ space.
@@ -429,18 +428,7 @@ Prose Form | Correct | Incorrect
 
 ### 6.1 Caught exceptions: not ignored
 
-Except as noted below, it is very rarely correct to do nothing in response to a caught exception. (Typical responses are to log it.)
-
-When it truly is appropriate to take no action whatsoever in a catch block, the reason this is justified is explained in a comment.
-
-**Exception:** In tests, a caught exception may be ignored without comment _if_ its name is or begins with `expected`. The following is a very common idiom for ensuring that the code under test _does_ throw an exception of the expected type, so a comment is unnecessary here.
-
-    try {
-        someMethod();
-
-        fail();
-    } catch (ConfigurationException expected) {
-    }
+It is incorrect to do nothing in response to a caught exception. (Typical responses are to log it.)
 
 ## 7 ApexDoc
 
