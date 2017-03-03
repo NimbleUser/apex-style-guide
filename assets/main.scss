@@ -1,0 +1,112 @@
+---
+# Only the main Sass file needs front matter (the dashes are enough)
+---
+@charset "utf-8";
+
+// Our variables
+$base-font-family: 'Rubik', sans-serif;
+$base-font-size:   14px;
+$base-font-weight: 300;
+$small-font-size:  $base-font-size * 0.875;
+$base-line-height: 1.5;
+
+$spacing-unit:     30px;
+
+$text-color:       #333;
+$background-color: #fff;
+$brand-color:      #00AFD7;
+$code-background:  #fafafa;
+
+$grey-color:       #828282;
+$grey-color-light: lighten($grey-color, 40%);
+$grey-color-dark:  darken($grey-color, 25%);
+$margin-bottoms:   20px;
+
+// Width of the content area
+$content-width:    1100px;
+
+$on-palm:          600px;
+$on-laptop:        800px;
+
+// Minima also includes a mixin for defining media queries.
+// Use media queries like this:
+// @include media-query($on-palm) {
+//     .wrapper {
+//         padding-right: $spacing-unit / 2;
+//         padding-left: $spacing-unit / 2;
+//     }
+// }
+
+// Import partials from the `minima` theme.
+@import "minima";
+
+// Import fonts.
+@import url('https://fonts.googleapis.com/css?family=Rubik:300,400,400i,500,700,700i');
+
+h1, h2, h3, h4, h5, h6 {
+	font-weight: 500;
+	border-bottom: 1px solid $grey-color-light;
+	margin-bottom: $margin-bottoms;
+}
+
+table {
+	margin-bottom: $margin-bottoms;
+	border-spacing: 0;
+	border-collapse: collapse;
+}
+
+table th, table td {
+	border: 1px solid $grey-color-light;
+	text-align: left;
+	padding: 5px;
+}
+
+pre, code {
+	border-radius: 0;
+	background-color: $code-background;
+	font-size: $base-font-size;
+}
+
+a:visited {
+	color: $brand-color;
+}
+
+.site-header {
+	border-top: none;
+	border-bottom: none;
+	background-color: #fafafa;
+}
+
+.site-title {
+	font-weight: 500;
+	letter-spacing: 0;
+}
+
+.post-title {
+	font-size: 26px;
+	line-height: inherit;
+}
+
+.post-content h1 {
+	font-size: 26px;
+}
+
+.post-content h2 {
+	font-size: 22px;
+}
+
+.post-content h3 {
+	font-size: 18px;
+}
+
+.highlighter-rouge .highlight {
+	background: $code-background;
+}
+
+.footer-heading {
+	border-bottom: none;
+}
+
+.site-footer .contact-list {
+	margin-bottom: 0;
+}
