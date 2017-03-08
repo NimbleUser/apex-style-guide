@@ -12,6 +12,8 @@ Like other programming style guides, the issues covered span not only aesthetic 
 
 This is a fork of the [Google Java Style Guide](https://google.github.io/styleguide/javaguide.html), adapted and ported to the Apex Programming Language by [Craig Ceremuga](https://github.com/cceremuga) with the immensely helpful input and feedback of the entire NimbleUser technical consulting and engineering staff.
 
+Collaborators are welcome and the Markdown source code can be found on the [NimbleUser GitHub organization](https://github.com/NimbleUser/apex-style-guide/).
+
 ### 1.1 Terminology notes
 
 In this document, unless otherwise clarified:
