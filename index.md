@@ -4,7 +4,9 @@ permalink: /
 title:  "The Guide"
 ---
 
-## 1 Introduction
+<div id="table-of-contents"></div>
+
+## 1 - Introduction
 
 This document serves as the **complete** definition of NimbleUser's coding standards for source code in the [Apex Programming Language](https://developer.salesforce.com/page/Apex_Code:_The_World's_First_On-Demand_Programming_Language). An Apex source file is described as being _in NimbleUser Style_ if and only if it adheres to the rules herein.
 
@@ -14,7 +16,7 @@ This is a fork of the [Google Java Style Guide](https://google.github.io/stylegu
 
 Collaborators are welcome and the Markdown source code can be found on the [NimbleUser GitHub organization](https://github.com/NimbleUser/apex-style-guide/).
 
-### 1.1 Terminology notes
+### 1.1 - Terminology notes
 
 In this document, unless otherwise clarified:
 
@@ -24,38 +26,38 @@ In this document, unless otherwise clarified:
 
 Other "terminology notes" will appear occasionally throughout the document.
 
-### 1.2 Guide notes
+### 1.2 - Guide notes
 
 Example code in this document is **non-normative**. That is, while the examples are in NimbleUser Style, they may not illustrate the _only_ stylish way to represent the code. Optional formatting choices made in examples should not be enforced as rules.
 
-## 2 Source file basics
+## 2 - Source file basics
 
-### 2.1 File name
+### 2.1 - File name
 
 The source file name consists of the case-sensitive name of the top-level class it contains (of which there is **exactly one**), plus the `.cls` extension.
 
 See also section 5.2.1 for Apex Class naming.
 
-### 2.2 File encoding: UTF-8
+### 2.2 - File encoding: UTF-8
 
 Source files are encoded in **UTF-8**.
 
-#### 2.3.1 Whitespace characters
+#### 2.3.1 - Whitespace characters
 
 Aside from the line terminator sequence, the **ASCII horizontal space character** (**0x20**) is the only whitespace character that appears anywhere in a source file. This implies that:
 
 1. All other whitespace characters in string and character literals are escaped.
 2. Tab characters are **not** used for indentation.
 
-### 2.3.2 String class escape methods
+### 2.3.2 - String class escape methods
 
 The [Apex String class](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_methods_system_string.htm) defines several escape* methods that can be used to include special characters in strings.
 
-#### 2.3.3 SOQL quoted string escape sequence
+#### 2.3.3 - SOQL quoted string escape sequence
 
 SOQL defines [several escape sequences](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql_select_quotedstringescapes.htm) that are valid in queries so that you can include special characters in your queries.
 
-## 3 Source file structure
+## 3 - Source file structure
 
 A source file consists of, **in order**:
 
@@ -64,35 +66,35 @@ A source file consists of, **in order**:
 
 **No blank lines** separate each section that is present.
 
-### 3.1 Top level ApexDoc comments
+### 3.1 - Top level ApexDoc comments
 
 Each top-level `global` or `public` class starts with an ApexDoc on the first line, containing a high level description of its purpose.
 
 See section 7 for more about ApexDoc.
 
-### 3.2 Class declaration
+### 3.2 - Class declaration
 
-#### 3.2.1 Exactly one top-level class declaration
+#### 3.2.1 - Exactly one top-level class declaration
 
 Each top-level class resides in a source file of its own.
 
-#### 3.2.2 Ordering of class contents
+#### 3.2.2 - Ordering of class contents
 
 The order you choose for the members and initializers of your class can have a great effect on learnability. However, there's no single correct recipe for how to do it; different classes may order their contents in different ways.
 
 What is important is that each class uses **_some_ logical order**, which its maintainer could explain if asked. For example, new methods are not just habitually added to the end of the class, as that would yield "chronological by date added" ordering, which is not a logical ordering.
 
-##### 3.2.2.1 Overloads: never split
+##### 3.2.2.1 - Overloads: never split
 
 When a class has multiple constructors, or multiple methods with the same name, these appear sequentially, with no other code in between (not even private members).
 
-## 4 Formatting
+## 4 - Formatting
 
 **Terminology Note:** _block-like construct_ refers to the body of a class, method or constructor. Note that, by Section 4.8.3.1 on list initializers, any list initializer _may_ optionally be treated as if it were a block-like construct.
 
-### 4.1 Braces
+### 4.1 - Braces
 
-#### 4.1.1 Braces are used where optional
+#### 4.1.1 - Braces are used where optional
 
 Braces are used with `if`, `else`, `for`, `do` and `while` statements, even when the body is empty or contains only a single statement.
 
@@ -123,7 +125,7 @@ Examples:
 
 See section 4.6.2 for horizontal whitespace style.
 
-#### 4.1.3 Empty blocks: may be concise
+#### 4.1.3 - Empty blocks: may be concise
 
 An empty block or block-like construct may be in K & R style (as described in Section 4.1.2). Alternatively, it may be closed immediately after it is opened, with no characters or line break in between (`{}`), **unless** it is part of a _multi-block statement_ (one that directly contains multiple blocks: `if/else` or `try/catch/finally`).
 
@@ -141,15 +143,15 @@ Examples:
       doSomething();
     } catch (Exception e) {}
 
-### 4.2 Block indentation: +4 spaces
+### 4.2 - Block indentation: +4 spaces
 
 Each time a new block or block-like construct is opened, the indent increases by two spaces. When the block ends, the indent returns to the previous indent level. The indent level applies to both code and comments throughout the block. (See the example in Section 4.1.2, Nonempty blocks: K & R Style.)
 
-### 4.3 One statement per line
+### 4.3 - One statement per line
 
 Each statement is followed by a line break.
 
-### 4.4 Column limit: 120
+### 4.4 - Column limit: 120
 
 Apex code has a column limit of 120 characters. Except as noted below, any line that would exceed this limit must be line-wrapped, as explained in Section 4.5, Line-wrapping.
 
@@ -158,7 +160,7 @@ Apex code has a column limit of 120 characters. Except as noted below, any line 
 1. Lines where obeying the column limit is not possible (for example, a long URL in ApexDoc).
 2. Command lines in a comment that may be cut-and-pasted into a shell.
 
-### 4.5 Line-wrapping
+### 4.5 - Line-wrapping
 
 **Terminology Note:** When code that might otherwise legally occupy a single line is divided into multiple lines, this activity is called _line-wrapping_.
 
@@ -168,7 +170,7 @@ There is no comprehensive, deterministic formula showing _exactly_ how to line-w
 
 **Tip:** Extracting a method or local variable may solve the problem without the need to line-wrap.
 
-#### 4.5.1 Where to break
+#### 4.5.1 - Where to break
 
 The prime directive of line-wrapping is: prefer to break at a **higher syntactic level**. Also:
 
@@ -182,7 +184,7 @@ The prime directive of line-wrapping is: prefer to break at a **higher syntactic
 
 **Note:** The primary goal for line wrapping is to have clear code, _not necessarily_ code that fits in the smallest number of lines.
 
-#### 4.5.2 Indent continuation lines at least +8 spaces
+#### 4.5.2 - Indent continuation lines at least +8 spaces
 
 When line-wrapping, each line after the first (each _continuation line_) is indented at least +4 from the original line.
 
@@ -190,9 +192,9 @@ When there are multiple continuation lines, indentation may be varied beyond +4 
 
 Section 4.6.3 on Horizontal alignment addresses the discouraged practice of using a variable number of spaces to align certain tokens with previous lines.
 
-### 4.6 Whitespace
+### 4.6 - Whitespace
 
-#### 4.6.1 Vertical Whitespace
+#### 4.6.1 - Vertical Whitespace
 
 A single blank line appears:
 
@@ -205,7 +207,7 @@ A single blank line appears:
 
 _Multiple_ consecutive blank lines are permitted, but never required (or encouraged).
 
-#### 4.6.2 Horizontal whitespace
+#### 4.6.2 - Horizontal whitespace
 
 Beyond where required by the language or other style rules, and apart from literals, comments and ApexDoc, a single ASCII space also appears in the following places **only**.
 
@@ -223,7 +225,7 @@ But does not apply to:
 
 This rule is never interpreted as requiring or forbidding additional space at the start or end of a line; it addresses only _interior_ space.
 
-#### 4.6.3 Horizontal alignment: never required
+#### 4.6.3 - Horizontal alignment: never required
 
 **Terminology Note:** _Horizontal alignment_ is the practice of adding a variable number of additional spaces in your code with the goal of making certain tokens appear directly below certain other tokens on previous lines.
 
@@ -239,13 +241,13 @@ Here is an example without alignment, then using alignment:
 
 **Tip:** Alignment can aid readability, but it creates problems for future maintenance. Consider a future change that needs to touch just one line. This change may leave the formerly-pleasing formatting mangled, and that is **allowed**. More often it prompts the coder (perhaps you) to adjust whitespace on nearby lines as well, possibly triggering a cascading series of reformattings. That one-line change now has a "blast radius." This can at worst result in pointless busywork, but at best it still corrupts version history information, slows down reviewers and exacerbates merge conflicts.
 
-### 4.7 Grouping parentheses: recommended
+### 4.7 - Grouping parentheses: recommended
 
 Optional grouping parentheses are omitted only when author and reviewer agree that there is no reasonable chance the code will be misinterpreted without them, nor would they have made the code easier to read. It is _not_ reasonable to assume that every reader has the entire Apex operator precedence table memorized.
 
-### 4.8 Specific constructs
+### 4.8 - Specific constructs
 
-#### 4.8.1 Enums
+#### 4.8.1 - Enums
 
 After each comma that follows an enum constant, a line break is optional. Additional blank lines (usually just one) are also allowed. This is one possibility:
 
@@ -260,19 +262,19 @@ An enum with no documentation on its constants may optionally be formatted as if
 
     private enum Suit { CLUBS, HEARTS, SPADES, DIAMONDS }
 
-#### 4.8.2 Variable declarations
+#### 4.8.2 - Variable declarations
 
-##### 4.8.2.1 One variable per declaration
+##### 4.8.2.1 - One variable per declaration
 
 Every variable declaration (field or local) declares only one variable.
 
-##### 4.8.2.2 Declared when needed
+##### 4.8.2.2 - Declared when needed
 
 Local variables are **not** habitually declared at the start of their containing block or block-like construct. Instead, local variables are declared close to the point they are first used (within reason), to minimize their scope. Local variable declarations typically have initializers, or are initialized immediately after declaration.
 
-#### 4.8.3 Lists
+#### 4.8.3 - Lists
 
-##### 4.8.3.1 List initializers: can be "block-like"
+##### 4.8.3.1 - List initializers: can be "block-like"
 
 Any list initializer may _optionally_ be formatted as if it were a "block-like construct." For example, the following are all valid (**not** an exhaustive list):
 
@@ -286,7 +288,7 @@ Any list initializer may _optionally_ be formatted as if it were a "block-like c
         'three'
     };
 
-#### 4.8.4 Annotations
+#### 4.8.4 - Annotations
 
 [Annotations](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_classes_annotation.htm) applying to a class, method or constructor appear immediately after the documentation block, and on a line of its own. These line breaks do not constitute line-wrapping (Section 4.5, Line-wrapping, so the indentation level is not increased. Example:
 
@@ -300,13 +302,13 @@ Exception: A single parameterless annotation may instead appear together with th
 
     }
 
-#### 4.8.5 Comments
+#### 4.8.5 - Comments
 
 This section addresses _implementation comments_. ApexDoc is addressed separately in Section 7, ApexDoc.
 
 Any line break may be preceded by arbitrary whitespace followed by an implementation comment. Such a comment renders the line non-blank.
 
-##### 4.8.5.1 Block comment style
+##### 4.8.5.1 - Block comment style
 
 Block comments are indented at the same level as the surrounding code. They may be in `/* ... */` style or `// ...` style. For multi-line `/* ... */` comments, subsequent lines must start with `*` aligned with the `*` on the previous line.
 
@@ -319,19 +321,19 @@ Comments are not enclosed in boxes drawn with asterisks or other characters.
 
 **Tip:** When writing multi-line comments, use the `/* ... */` style if you want automatic code formatters to re-wrap the lines when necessary (paragraph-style). Most formatters don't re-wrap lines in `// ...` style comment blocks.
 
-#### 4.8.6 Modifiers
+#### 4.8.6 - Modifiers
 
 Class and member modifiers, when present, appear in the order recommended by the Apex Language Specification:
 
 private protected public global virtual abstract with sharing without sharing
 
-#### 4.8.6 Numeric Literals
+#### 4.8.6 - Numeric Literals
 
 `Long`-valued integer literals use an uppercase `L` suffix, never lowercase (to avoid confusion with the digit `1`). For example, `3000000000L` rather than `3000000000l`.
 
-## 5 Naming
+## 5 - Naming
 
-### 5.1 Rules common to all identifiers
+### 5.1 - Rules common to all identifiers
 
 Identifiers use only ASCII letters and digits, and, in a small number of cases noted below, underscores. Thus each valid identifier name is matched by the regular expression `\w+` .
 
@@ -339,9 +341,9 @@ The platform reserves use of two consecutive underscores in a name (double under
 
 In NimbleUser Style special prefixes or suffixes, like those seen in the examples `name_`, `mName`, `s_name` and `kName`, are **not** used.
 
-### 5.2 Rules by identifier type
+### 5.2 - Rules by identifier type
 
-#### 5.2.1 Class names
+#### 5.2.1 - Class names
 
 Class names are written in UpperCamelCase.
 
@@ -349,7 +351,7 @@ Class names are typically nouns or noun phrases. For example, `Character` or `Im
 
 _Test_ classes are named starting with the name of the class they are testing, and ending with `Test`. For example, `HashTest` or `HashIntegrationTest`.
 
-#### 5.2.2 Method names
+#### 5.2.2 - Method names
 
 Method names are written in lowerCamelCase.
 
@@ -357,7 +359,7 @@ Method names are typically verbs or verb phrases. For example, `sendMessage` or 
 
 Underscores may appear in unit _test_ method names to separate logical components of the name. One typical pattern is `<MethodUnderTest>_<withState>_<expectation>`, for example `constructor_nullArgument_expectArgumentNullException`. There is no One Correct Way to name test methods.
 
-#### 5.2.4 Constant names
+#### 5.2.4 - Constant names
 
 Constant names use `CONSTANT_CASE`: all uppercase letters, with words separated by underscores. But what _is_ a constant, exactly?
 
@@ -377,29 +379,29 @@ Constants are static final fields whose contents are deeply immutable and whose 
 
 These names are typically nouns or noun phrases.
 
-#### 5.2.5 Non-constant field names
+#### 5.2.5 - Non-constant field names
 
 Non-constant field names (static or otherwise) are written in lowerCamelCase.
 
 These names are typically nouns or noun phrases. For example, `computedValues` or `index`.
 
-#### 5.2.6 Parameter names
+#### 5.2.6 - Parameter names
 
 Parameter names are written in lowerCamelCase.
 
 One-character parameter names should be avoided.
 
-#### 5.2.7 Local variable names
+#### 5.2.7 - Local variable names
 
 Local variable names are written in lowerCamelCase.
 
 Even when final and immutable, local variables are not considered to be constants, and should not be styled as constants.
 
-#### 5.2.8 Property names
+#### 5.2.8 - Property names
 
 Property names are written in UpperCamelCase.
 
-### 5.3 Camel case: defined
+### 5.3 - Camel case: defined
 
 Sometimes there is more than one reasonable way to convert an English phrase into camel case, such as when acronyms or unusual constructs like "IPv6" or "iOS" are present. To improve predictability, NimbleUser Style specifies the following (nearly) deterministic scheme.
 
@@ -424,17 +426,17 @@ Prose Form | Correct | Incorrect
 
 **Note:** Some words are ambiguously hyphenated in the English language: for example "nonempty" and "non-empty" are both correct, so the method names `checkNonempty` and `checkNonEmpty` are likewise both correct.
 
-## 6 Programming Practices
+## 6 - Programming Practices
 
-### 6.1 Caught exceptions: not ignored
+### 6.1 - Caught exceptions: not ignored
 
 It is incorrect to do nothing in response to a caught exception. (Typical responses are to log it.)
 
-## 7 ApexDoc
+## 7 - ApexDoc
 
-### 7.1 Formatting
+### 7.1 - Formatting
 
-#### 7.1.1 General form
+#### 7.1.1 - General form
 
 The _basic_ formatting of [ApexDoc](https://github.com/SalesforceFoundation/ApexDoc) blocks is as seen in this example:
 
@@ -458,22 +460,25 @@ This is a fragment: a noun phrase or verb phrase, not a complete sentence. It do
 
 **Tip:** A common mistake is to write simple ApexDoc in the form `@return the customer ID`. This is incorrect, and should be changed to `Returns the customer ID.`
 
-### 7.3 Where ApexDoc is used
+### 7.3 - Where ApexDoc is used
 
 At the _minimum_, ApexDoc is present for every `global`, `public` class, and every `global`, `public` or `protected` member of such a class, with a few exceptions noted below.
 
-#### 7.3.1 Exception: self-explanatory methods
+#### 7.3.1 - Exception: self-explanatory methods
 
 ApexDoc is optional for "simple, obvious" methods like `getFoo`, in cases where there _really and truly_ is nothing else worthwhile to say but "Returns the foo".
 
 **Important:** it is not appropriate to cite this exception to justify omitting relevant information that a typical reader might need to know. For example, for a method named `getCanonicalName`, don't omit its documentation (with the rationale that it would say only `/** @description Returns the canonical name. */`) if a typical reader may have no idea what the term "canonical name" means!
 
-#### 7.3.2 Exception: overrides
+#### 7.3.2 - Exception: overrides
 
 ApexDoc is not always present on a method that overrides a supertype method.
 
-#### 7.3.3 Non-required ApexDoc
+#### 7.3.3 - Non-required ApexDoc
 
 Other classes and members have ApexDoc *as needed or desired*.
 
 Whenever an implementation comment would be used to define the overall purpose or behavior of a class or member, that comment is written as ApexDoc instead (using `/**`).
+
+<script src="/assets/jquery-3.2.1.min.js"></script>
+<script src="/assets/toc.js"></script>
