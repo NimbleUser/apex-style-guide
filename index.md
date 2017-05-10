@@ -480,5 +480,5 @@ Other classes and members have ApexDoc *as needed or desired*.
 
 Whenever an implementation comment would be used to define the overall purpose or behavior of a class or member, that comment is written as ApexDoc instead (using `/**`).
 
-<script src="/assets/jquery-3.2.1.min.js"></script>
-<script src="/assets/toc.js"></script>
+<script src="assets/jquery-3.2.1.min.js"></script>
+<script src="assets/toc.js"></script>
