@@ -13,6 +13,8 @@ This is a fork of the [Google Java Style Guide](https://google.github.io/stylegu
 The guide is published as a GitHub Pages site for convenient access at [nimbleuser.github.io/apex-style-guide/](https://nimbleuser.github.io/apex-style-guide/).
 
 ## Release Notes
+* 6/5/2017
+    * New sections on testing, mocking added.
 * 5/10/2017
     * Table of contents added.
     * Clicking on a heading will copy a direct URL for that section to your clipboard.
