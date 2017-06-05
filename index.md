@@ -480,5 +480,93 @@ Other classes and members have ApexDoc *as needed or desired*.
 
 Whenever an implementation comment would be used to define the overall purpose or behavior of a class or member, that comment is written as ApexDoc instead (using `/**`).
 
+## 8 - Testing
+
+### 8.1 - Declaration
+
+#### 8.1.1 - Test Classes
+
+Test classes are annotated with `@isTest`. This omits them from code coverage considerations at the time of deployment and packaging. All test classes are `private`.
+
+    @isTest
+    private class ExampleTest {
+        ...
+    }
+
+#### 8.1.2 - Test Methods
+
+Each test is annotated with a simple `@isTest` on the line proceeding the method declaration. This keeps it consistent with the declaration of a test class.
+
+The name of a test method is descriptive as to what method is being tested, what conditions apply to the method under test, what the expected outcome is.
+
+    @isTest
+    private static void constructor_nullArgument_expectArgumentNullException() {
+        ...
+    }
+
+##### 8.1.2.1 - SeeAllData
+
+The `@isTest(SeeAllData=true)` test setting should be avoided unless absolutely necessary. Part of writing safe, high quality tests is to ensure that your test data is unchanging.
+
+This test setting allows your tests to [use live data](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_testing_seealldata_using.htm) in your Salesforce org. Any user could change that data at any time and in turn, cause your test to fail.
+
+##### 8.1.2.2 - Starting and Stopping
+
+In a test method, the `Test.startTest()` and `Test.stopTest()` method calls are to be used to isolate the single operation under test from any test setup code, by [resetting the limits](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_testing_tools_start_stop_test.htm).
+
+    @isTest
+    private static void getRecord_withRecordId_expectRecordRetrieved() {
+        ExampleController testController = new ExampleController();
+
+        // Inserts an SObject record to use in the execution of the test. Impacts governor limits.
+        Id testRecordId = TestDataHelperClass.Instance.insertRecord().Id;
+
+        Test.startTest();
+        SObject actualRecord = testController.getRecord(testRecordId);
+        Test.stopTest();
+
+        System.assertNotEquals(null, actualRecord, 'Did not expect to retrieve a null record.');
+        System.assertEquals(testRecordId, actualRecord.Id, 'Expected to retrieve the test record.');
+    }
+
+### 8.2 - Mocking
+
+When possible, utilize mocking functionality. Mocking cuts down on test execution time by decoupling your code from the Salesforce database when running tests which interact with SObject records.
+
+One such way is via the [FinancialForce fflib-apex-common open source project](https://github.com/financialforcedev/fflib-apex-common). This allows for convenient mocking.
+
+#### 8.2.1 - Class Considerations
+
+When utilizing mocking, it is required by the platform to have access to a constructor which is `public` or `global` and contains zero arguments.
+
+If you do not wish to expose a zero argument constructor in a given class, you can declare a `@testVisible`, `protected` constructor.
+
+    public virtual without sharing class Example {
+        /**
+         * @description A protected constructor solely for mocking purposes.
+         */
+        @testVisible
+        protected Example() { }
+
+        /**
+         * @description Constructs an instance of Example with the specified record Id.
+         * @param recordId The record Id to use for instantiation.
+         * @throws ArgumentNullException if Id is null.
+         */
+        public Example(Id recordId) {
+            ...
+        }
+    }
+
+#### 8.2.2 - Method Considerations
+
+When restricting code blocks for purposes of mocking, check if the mock instance is `null` prior to checking if `Test.isRunningTest()`.
+
+This lessens the opportunity for any such performance bottlenecks that could occur at runtime during the checking of `Test.isRunningTest()` as it is secondary to the mockking `null` check.
+
+    if (mockInstance != null && Test.isRunningTest()) {
+        return mockInstance;
+    }
+
 <script src="assets/jquery-3.2.1.min.js"></script>
 <script src="assets/toc.js"></script>
