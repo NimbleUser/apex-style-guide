@@ -504,7 +504,13 @@ The name of a test method is descriptive as to what method is being tested, what
         ...
     }
 
-##### 8.1.2.1 - Starting and Stopping
+##### 8.1.2.1 - SeeAllData
+
+The `@isTest(SeeAllData=true)` test setting should be avoided unless absolutely necessary. Part of writing safe, high quality tests is to ensure that your test data is unchanging.
+
+This test setting allows your tests to [use live data](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_testing_seealldata_using.htm) in your Salesforce org. Any user could change that data at any time and in turn, cause your test to fail.
+
+##### 8.1.2.2 - Starting and Stopping
 
 In a test method, the `Test.startTest()` and `Test.stopTest()` method calls are to be used to isolate the single operation under test from any test setup code, by [resetting the limits](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_testing_tools_start_stop_test.htm).
 
@@ -525,13 +531,11 @@ In a test method, the `Test.startTest()` and `Test.stopTest()` method calls are 
 
 ### 8.2 - Mocking
 
-#### 8.2.1 - fflib-apex-common
+When possible, utilize mocking functionality. Mocking cuts down on test execution time by decoupling your code from the Salesforce database when running tests which interact with SObject records.
 
-When possible, utilize the ApexMocks functionality in the [FinancialForce fflib-apex-common open source project](https://github.com/financialforcedev/fflib-apex-common). This allows for convenient mocking.
+One such way is via the [FinancialForce fflib-apex-common open source project](https://github.com/financialforcedev/fflib-apex-common). This allows for convenient mocking.
 
-Additionally, it cuts down on test execution time by decoupling your code from the Salesforce database when running tests which interact with SObject records.
-
-#### 8.2.2 - Class Considerations
+#### 8.2.1 - Class Considerations
 
 When utilizing mocking, it is required by the platform to have access to a constructor which is `public` or `global` and contains zero arguments.
 
@@ -554,7 +558,7 @@ If you do not wish to expose a zero argument constructor in a given class, you c
         }
     }
 
-#### 8.2.3 - Method Considerations
+#### 8.2.2 - Method Considerations
 
 When restricting code blocks for purposes of mocking, check if the mock instance is `null` prior to checking if `Test.isRunningTest()`.
 
