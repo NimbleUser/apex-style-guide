@@ -184,6 +184,28 @@ The prime directive of line-wrapping is: prefer to break at a **higher syntactic
 
 **Note:** The primary goal for line wrapping is to have clear code, _not necessarily_ code that fits in the smallest number of lines.
 
+##### 4.5.1.1 - SOQL and SOSL statements
+
+Line breaks are optional.
+
+A line break comes before a reserved word.
+
+Examples:
+
+    List<Account> accountList = [SELECT Id, Name FROM Account];
+
+    List<Account> accountListWithNotes = [
+        SELECT Id,
+            Name,
+            LastModifiedDate,
+            (SELECT Title, Body FROM Notes
+            WHERE LastModifiedDate = LAST_N_YEARS:5)
+        FROM Account
+        WHERE LastModifiedDate = LAST_N_MONTHS:6
+        AND Phone != NULL
+        ORDER BY Phone ASC
+    ];
+
 #### 4.5.2 - Indent continuation lines at least +8 spaces
 
 When line-wrapping, each line after the first (each _continuation line_) is indented at least +4 from the original line.
@@ -191,6 +213,14 @@ When line-wrapping, each line after the first (each _continuation line_) is inde
 When there are multiple continuation lines, indentation may be varied beyond +4 as desired. In general, two continuation lines use the same indentation level if and only if they begin with syntactically parallel elements.
 
 Section 4.6.3 on Horizontal alignment addresses the discouraged practice of using a variable number of spaces to align certain tokens with previous lines.
+
+##### 4.5.2.1 - SOQL and SOSL indentation
+
+When a SOQL or SOSL statement is line wrapped it uses the standard +4 spaces from the block containing it.
+
+Field names and sub-selects may be indented a further +4 spaces.
+
+Avoid using a variable number of spaces to align with previous lines.
 
 ### 4.6 - Whitespace
 
@@ -400,6 +430,10 @@ Even when final and immutable, local variables are not considered to be constant
 #### 5.2.8 - Property names
 
 Property names are written in UpperCamelCase.
+
+#### 5.2.9 - SOQL and SOSL reserved words
+
+All SOQL and SOSL reserved words are written in all uppercase letters.
 
 ### 5.3 - Camel case: defined
 
