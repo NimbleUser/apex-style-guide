@@ -389,7 +389,7 @@ Method names are typically verbs or verb phrases. For example, `sendMessage` or 
 
 Underscores may appear in unit _test_ method names to separate logical components of the name. One typical pattern is `<MethodUnderTest>_<withState>_<expectation>`, for example `constructor_nullArgument_expectArgumentNullException`. There is no One Correct Way to name test methods.
 
-#### 5.2.4 - Constant names
+#### 5.2.3 - Constant names
 
 Constant names use `CONSTANT_CASE`: all uppercase letters, with words separated by underscores. But what _is_ a constant, exactly?
 
@@ -409,29 +409,29 @@ Constants are static final fields whose contents are deeply immutable and whose 
 
 These names are typically nouns or noun phrases.
 
-#### 5.2.5 - Non-constant field names
+#### 5.2.4 - Non-constant field names
 
 Non-constant field names (static or otherwise) are written in lowerCamelCase.
 
 These names are typically nouns or noun phrases. For example, `computedValues` or `index`.
 
-#### 5.2.6 - Parameter names
+#### 5.2.5 - Parameter names
 
 Parameter names are written in lowerCamelCase.
 
 One-character parameter names should be avoided.
 
-#### 5.2.7 - Local variable names
+#### 5.2.6 - Local variable names
 
 Local variable names are written in lowerCamelCase.
 
 Even when final and immutable, local variables are not considered to be constants, and should not be styled as constants.
 
-#### 5.2.8 - Property names
+#### 5.2.7 - Property names
 
 Property names are written in UpperCamelCase.
 
-#### 5.2.9 - SOQL and SOSL reserved words
+#### 5.2.8 - SOQL and SOSL reserved words
 
 All SOQL and SOSL reserved words are written in all uppercase letters.
 
