@@ -100,9 +100,9 @@ Braces are used with `if`, `else`, `for`, `do` and `while` statements, even when
 
 [Apex properties](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_classes_properties.htm) may be written like:
 
-    public integer MyReadOnlyProp { get; }
-    public double MyReadWriteProp { get; set; }
-    public string MyWriteOnlyProp { set; }
+    public Integer MyReadOnlyProp { get; }
+    public Double MyReadWriteProp { get; set; }
+    public String MyWriteOnlyProp { set; }
 
 #### 4.1.2 Nonempty blocks: K & R style
 
