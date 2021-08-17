@@ -206,7 +206,7 @@ Examples:
         ORDER BY Phone ASC
     ];
 
-#### 4.5.2 - Indent continuation lines at least +8 spaces
+#### 4.5.2 - Indent continuation lines at least +4 spaces
 
 When line-wrapping, each line after the first (each _continuation line_) is indented at least +4 from the original line.
 
