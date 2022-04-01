@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This repository contains the **complete** definition of NimbleUser's coding standards for source code in the [Apex Programming Language](https://developer.salesforce.com/page/Apex_Code:_The_World's_First_On-Demand_Programming_Language). An Apex source file is described as being _in NimbleUser Style_ if and only if it adheres to the rules herein.
+This repository contains the **complete** definition of NimbleUser's coding standards for source code in the [Apex Programming Language](https://developer.salesforce.com/developer-centers/apex). An Apex source file is described as being _in NimbleUser Style_ if and only if it adheres to the rules herein.
 
 Like other programming style guides, the issues covered span not only aesthetic issues of formatting, but other types of conventions or coding standards as well. However, this document focuses primarily on the **hard-and-fast rules** that we follow universally, and avoids giving _advice_ that isn't clearly enforceable (whether by human or tool).
 
