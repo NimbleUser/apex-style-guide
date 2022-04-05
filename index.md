@@ -546,7 +546,7 @@ This test setting allows your tests to [use live data](https://developer.salesfo
 
 ##### 8.1.2.2 - Starting and Stopping
 
-In a test method, the `Test.startTest()` and `Test.stopTest()` method calls are to be used to isolate the single operation under test from any test setup code, by [resetting the limits](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_testing_tools_start_stop_test.htm).
+In a test method, the `Test.startTest()` and `Test.stopTest()` method calls are to be used to isolate the single operation under test from any test setup code, by [resetting the limits](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_testing_tools_start_stop_test.htm). Any code between the `Test.startTest()` and `Test.stopTest()` method calls must be indented a further +4 spaces.
 
     @isTest
     private static void getRecord_withRecordId_expectRecordRetrieved() {
@@ -556,7 +556,7 @@ In a test method, the `Test.startTest()` and `Test.stopTest()` method calls are 
         Id testRecordId = TestDataHelperClass.Instance.insertRecord().Id;
 
         Test.startTest();
-        SObject actualRecord = testController.getRecord(testRecordId);
+            SObject actualRecord = testController.getRecord(testRecordId);
         Test.stopTest();
 
         System.assertNotEquals(null, actualRecord, 'Did not expect to retrieve a null record.');
