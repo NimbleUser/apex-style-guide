@@ -200,7 +200,7 @@ List<Account> accountList = [SELECT Id, Name FROM Account WHERE id = :someId];
 
 Line exceeds line length:
 
-* Multiple expressions in the select clause
+Multiple expressions in the select clause
 
     List<Account> accountListWithNotes = [
         SELECT 
@@ -212,7 +212,7 @@ Line exceeds line length:
         ORDER BY Phone ASC
     ];
 
-* Multiple filters in where clause
+Multiple filters in where clause
 
     List<Account> accountListWithNotes = [
         SELECT Id
