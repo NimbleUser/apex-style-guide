@@ -202,96 +202,95 @@ Line exceeds line length:
 
 * Multiple expressions in the select clause
 
-List<Account> accountListWithNotes = [
-    SELECT 
-        Id,
-        Name,
-        LastModifiedDate
-    FROM Account
-    WHERE LastModifiedDate = LAST_N_MONTHS:6
-    ORDER BY Phone ASC
-];
+    List<Account> accountListWithNotes = [
+        SELECT 
+            Id,
+            Name,
+            LastModifiedDate
+        FROM Account
+        WHERE LastModifiedDate = LAST_N_MONTHS:6
+        ORDER BY Phone ASC
+    ];
 
 * Multiple filters in where clause
 
-List<Account> accountListWithNotes = [
-    SELECT Id
-    FROM Account
-    WHERE LastModifiedDate = LAST_N_MONTHS:6
-        AND Phone != NULL
-        AND (Name IN ('Account1', 'Account2')
-            OR BillingState = 'IN')
-    ORDER BY Phone ASC
-];
+    List<Account> accountListWithNotes = [
+        SELECT Id
+        FROM Account
+        WHERE LastModifiedDate = LAST_N_MONTHS:6
+            AND Phone != NULL
+            AND (Name IN ('Account1', 'Account2')
+                OR BillingState = 'IN')
+        ORDER BY Phone ASC
+    ];
 
 Or:
 
-List<Account> accountListWithNotes = [
-    SELECT Id, Name, LastModifiedDate, Field2, Field3,
-           Field4, FIeld5, Field6
-      FROM Account
-     WHERE LastModifiedDate = LAST_N_MONTHS:6
-       AND Phone != NULL
-       AND (Name IN ('Account1', 'Account2')
-            OR BillingState = 'IN')
-     ORDER BY Phone ASC
-];
+    List<Account> accountListWithNotes = [
+        SELECT Id, Name, LastModifiedDate, Field2, Field3,
+            Field4, FIeld5, Field6
+        FROM Account
+        WHERE LastModifiedDate = LAST_N_MONTHS:6
+        AND Phone != NULL
+        AND (Name IN ('Account1', 'Account2')
+                OR BillingState = 'IN')
+        ORDER BY Phone ASC
+    ];
 
 OR:
 
-List<Account> accountListWithNotes = [
-    SELECT Id,
-           Name,
-           LastModifiedDate,
-           Field2,
-           Field3,
-           Field4,
-           Field5,
-           Field6
-      FROM Account
-     WHERE LastModifiedDate = LAST_N_MONTHS:6
-       AND Phone != NULL
-       AND (Name IN ('Account1', 'Account2')
-            OR BillingState = 'IN')
-     ORDER BY Phone ASC
-];
+    List<Account> accountListWithNotes = [
+        SELECT Id,
+            Name,
+            LastModifiedDate,
+            Field2,
+            Field3,
+            Field4,
+            Field5,
+            Field6
+        FROM Account
+        WHERE LastModifiedDate = LAST_N_MONTHS:6
+        AND Phone != NULL
+        AND (Name IN ('Account1', 'Account2')
+                OR BillingState = 'IN')
+        ORDER BY Phone ASC
+    ];
 
 Avoid
 
 * Avoid adding multiple where clause filters on the same line
 
-List<Account> accounts = [
-    SELECT Id
-    FROM Account
-    WHERE BillingState = 'MA' AND BillingCity = 'Boston' 
-    ORDER BY Phone ASC
-];
+    List<Account> accounts = [
+        SELECT Id
+        FROM Account
+        WHERE BillingState = 'MA' AND BillingCity = 'Boston' 
+        ORDER BY Phone ASC
+    ];
 
 * Avoid adding a line break on the IN reserved word
 
-List<Account> accounts = [
-    SELECT Id
-    FROM Account
-    WHERE LastModifiedDate = LAST_N_MONTHS:6
-        AND (Name 
-        IN ('Account1', 'Account2') 
-        OR BillingState = 'IN')
-    ORDER BY Phone ASC
-];
+    List<Account> accounts = [
+        SELECT Id
+        FROM Account
+        WHERE LastModifiedDate = LAST_N_MONTHS:6
+            AND (Name 
+            IN ('Account1', 'Account2') 
+            OR BillingState = 'IN')
+        ORDER BY Phone ASC
+    ];
 
 * Avoid breaking on boolean operators in where clause filter
 
-List<Account> accounts = [
-    SELECT Id
-    FROM Account
-    WHERE LastModifiedDate = LAST_N_MONTHS:6
-        AND Name =
-            'Tom'
-        OR BillingState =
-            'IN'
-    ORDER BY Phone ASC
-];
-
+    List<Account> accounts = [
+        SELECT Id
+        FROM Account
+        WHERE LastModifiedDate = LAST_N_MONTHS:6
+            AND Name =
+                'Tom'
+            OR BillingState =
+                'IN'
+        ORDER BY Phone ASC
+    ];
 
 #### 4.5.2 - Indent continuation lines at least +4 spaces
 
@@ -440,7 +439,7 @@ Comments are not enclosed in boxes drawn with asterisks or other characters.
 
 #### 4.8.6 - Modifiers
 
-Class and member modifiers, when present, appear in the order recommended by the Apex Language Specification (https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_classes_defining.htm):
+Class and member modifiers, when present, appear in the order recommended by the [Apex Language Specification] (https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_classes_defining.htm):
 
 private, protected, public, global, virtual, abstract, with sharing, without sharing
 
