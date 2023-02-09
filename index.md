@@ -186,7 +186,7 @@ The prime directive of line-wrapping is: prefer to break at a **higher syntactic
 
 ##### 4.5.1.1 - SOQL and SOSL statements
 
-DO:
+###### DO
 
 SOQL queries should be formatted for readability.  SOQL statements should adhere to max line length guidelines. If line breaks are required, break on SELECT, FROM, WHERE, ORDER BY, GROUP BY and field names.
 
@@ -241,11 +241,10 @@ OR:
         SELECT Id,
             Name,
             LastModifiedDate,
-            Field2,
-            Field3,
-            Field4,
-            Field5,
-            Field6
+            BillingCity,
+            BillingState,
+            BillingCountry,
+            Phone
         FROM Account
         WHERE LastModifiedDate = LAST_N_MONTHS:6
         AND Phone != NULL
@@ -254,9 +253,9 @@ OR:
         ORDER BY Phone ASC
     ];
 
-Avoid
+###### Avoid
 
-* Avoid adding multiple where clause filters on the same line
+Avoid adding multiple where clause filters on the same line
 
     List<Account> accounts = [
         SELECT Id
@@ -265,7 +264,7 @@ Avoid
         ORDER BY Phone ASC
     ];
 
-* Avoid adding a line break on the IN reserved word
+Avoid adding a line break on the IN reserved word
 
     List<Account> accounts = [
         SELECT Id
@@ -277,7 +276,7 @@ Avoid
         ORDER BY Phone ASC
     ];
 
-* Avoid breaking on boolean operators in where clause filter
+Avoid breaking on boolean operators in where clause filter
 
     List<Account> accounts = [
         SELECT Id
