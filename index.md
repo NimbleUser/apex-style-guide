@@ -194,9 +194,7 @@ Examples:
 
 Line length less than max line length
 
-
-List<Account> accountList = [SELECT Id, Name FROM Account WHERE id = :someId];
-
+    List<Account> accountList = [SELECT Id, Name FROM Account WHERE id = :someId];
 
 Line exceeds line length:
 
