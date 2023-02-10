@@ -8,13 +8,13 @@ title:  "The Guide"
 
 ## 1 - Introduction
 
-This document serves as the **complete** definition of NimbleUser's coding standards for source code in the [Apex Programming Language](https://developer.salesforce.com/page/Apex_Code:_The_World's_First_On-Demand_Programming_Language). An Apex source file is described as being _in NimbleUser Style_ if and only if it adheres to the rules herein.
+This document serves as the **complete** definition of Salesforce BT's coding standards for source code in the [Apex Programming Language](https://developer.salesforce.com/page/Apex_Code:_The_World's_First_On-Demand_Programming_Language). An Apex source file is described as being _in Salesforce BT Style_ if and only if it adheres to the rules herein.
 
 Like other programming style guides, the issues covered span not only aesthetic issues of formatting, but other types of conventions or coding standards as well. However, this document focuses primarily on the **hard-and-fast rules** that we follow universally, and avoids giving _advice_ that isn't clearly enforceable (whether by human or tool).
 
-This is a fork of the [Google Java Style Guide](https://google.github.io/styleguide/javaguide.html), adapted and ported to the Apex Programming Language by [Craig Ceremuga](https://github.com/cceremuga) with the immensely helpful input and feedback of the entire NimbleUser technical consulting and engineering staff.
+This is a fork of the [Google Java Style Guide](https://google.github.io/styleguide/javaguide.html), adapted and ported to the Apex Programming Language by [Craig Ceremuga](https://github.com/cceremuga) with the immensely helpful input and feedback of the entire Salesforce BT technical consulting and engineering staff.
 
-Collaborators are welcome and the Markdown source code can be found on the [NimbleUser GitHub organization](https://github.com/NimbleUser/apex-style-guide/).
+Collaborators are welcome and the Markdown source code can be found on the [Salesforce BT GitHub organization](https://github.com/Salesforce BT/apex-style-guide/).
 
 ### 1.1 - Terminology notes
 
@@ -28,7 +28,7 @@ Other "terminology notes" will appear occasionally throughout the document.
 
 ### 1.2 - Guide notes
 
-Example code in this document is **non-normative**. That is, while the examples are in NimbleUser Style, they may not illustrate the _only_ stylish way to represent the code. Optional formatting choices made in examples should not be enforced as rules.
+Example code in this document is **non-normative**. That is, while the examples are in Salesforce BT Style, they may not illustrate the _only_ stylish way to represent the code. Optional formatting choices made in examples should not be enforced as rules.
 
 ## 2 - Source file basics
 
@@ -342,7 +342,7 @@ This rule is never interpreted as requiring or forbidding additional space at th
 
 **Terminology Note:** _Horizontal alignment_ is the practice of adding a variable number of additional spaces in your code with the goal of making certain tokens appear directly below certain other tokens on previous lines.
 
-This practice is permitted, but is **never required** by NimbleUser Style. It is not even required to _maintain_ horizontal alignment in places where it was already used.
+This practice is permitted, but is **never required** by Salesforce BT Style. It is not even required to _maintain_ horizontal alignment in places where it was already used.
 
 Here is an example without alignment, then using alignment:
 
@@ -453,7 +453,7 @@ Identifiers use only ASCII letters and digits, and, in a small number of cases n
 
 The platform reserves use of two consecutive underscores in a name (double underscore). A double underscore cannot be used in a developer name.
 
-In NimbleUser Style special prefixes or suffixes, like those seen in the examples `name_`, `mName`, `s_name` and `kName`, are **not** used.
+In Salesforce BT Style special prefixes or suffixes, like those seen in the examples `name_`, `mName`, `s_name` and `kName`, are **not** used.
 
 ### 5.2 - Rules by identifier type
 
@@ -521,7 +521,7 @@ All SOQL and SOSL reserved words are written in all uppercase letters.
 
 ### 5.3 - Camel case: defined
 
-Sometimes there is more than one reasonable way to convert an English phrase into camel case, such as when acronyms or unusual constructs like "IPv6" or "iOS" are present. To improve predictability, NimbleUser Style specifies the following (nearly) deterministic scheme.
+Sometimes there is more than one reasonable way to convert an English phrase into camel case, such as when acronyms or unusual constructs like "IPv6" or "iOS" are present. To improve predictability, Salesforce BT Style specifies the following (nearly) deterministic scheme.
 
 Beginning with the prose form of the name:
 
